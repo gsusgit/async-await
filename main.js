@@ -59,10 +59,14 @@ function exitApp() {
 }
 
 async function displayUser() {
-    const email = await logIn('me@example.com', '12345678')
-    const name = await getUserInfo(email)
-    await sayHi(name)
-    await exitApp()
+    try {
+        const email = await logIn('me@example.com', '12345678')
+        const name = await getUserInfo(email)
+        await sayHi(name)
+        await exitApp()
+    } catch (e) {
+        console.log(e)
+    }
 }
 
 displayUser()
